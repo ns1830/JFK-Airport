@@ -26,21 +26,21 @@ enum FlightStatus {
 }
 
 struct Airport {
-    var currentAirport: String
+    var name: String
+    var code: String
 }
 
 struct Flight {
     var airline: String
     var flightNumber: String
-    var terminal: Int
+    var terminal: Int?
     var departureTime: Date?
-    var status: String
-    var destination: String
+    var status: FlightStatus
+    var destination: Airport
 }
 
 class DepartureBoard {
-    var departures = Flight.init(airline: <#T##String#>, flightNumber: <#T##String#>, terminal: <#T##Int#>, departureTime: <#T##Date?#>, status: <#T##String#>, destination: <#T##String#>)
-    let thisAirport = Airport.init(currentAirport: <#T##String#>)
+    var flights: [Flight] = []
 }
 
 //: ## 2. Create 3 flights and add them to a departure board
@@ -54,12 +54,13 @@ class DepartureBoard {
 //:
 //: e. Stretch: Look at the API for [`DateComponents`](https://developer.apple.com/documentation/foundation/datecomponents?language=objc) for creating a specific time
 
+let flight1 = Flight(airline: "Cape Air", flightNumber: "9K 101", terminal: 5, departureTime: Date(), status: FlightStatus.OnTime, destination: Airport(name: "Nantucket", code: "ACK"))
+let flight2 = Flight(airline: "JetBlue", flightNumber: "B65921", terminal: 5, departureTime: nil, status: FlightStatus.Canceled, destination: Airport(name: "Nantucket", code: "ACK"))
+let flight3 = Flight(airline: "Korean Air", flightNumber: "KE82", terminal: nil, departureTime: Date(), status: FlightStatus.Scheduled, destination: Airport(name: "Seoul", code: "ICN"))
 
-
-
-
-
-
+DepartureBoard.init().flights.append(flight1)
+DepartureBoard.init().flights.append(flight2)
+DepartureBoard.init().flights.append(flight3)
 //: ## 3. Create a free-standing function that can print the flight information from the `DepartureBoard`
 //: a. Use the function signature: `printDepartures(departureBoard:)`
 //:
@@ -68,7 +69,11 @@ class DepartureBoard {
 //: c. Make your `FlightStatus` enum conform to `String` so you can print the `rawValue` String values from the `enum`. See the [enum documentation](https://docs.swift.org/swift-book/LanguageGuide/Enumerations.html).
 //:
 //: d. Print out the current DepartureBoard you created using the function
-
+func printDepartures(departureBoard: ) {
+    for departures in DepartureBoard.init().flights {
+        
+    }
+}
 
 
 
